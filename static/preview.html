@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>APEX — Signal Engine Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/css/style.css"/>
+<style>
+/* preview overrides — demo data is already rendered */
+.empty-state, .loading-wrap { display:none !important; }
+.signal-content { display:block !important; }
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="logo">
+    <div class="logo-hex">⬡</div>
+    <div class="logo-text">APEX <span class="logo-sub">Signal Engine</span></div>
+  </div>
+  <div class="search-bar">
+    <input type="text" value="BTC/USDT" readonly/>
+    <button class="btn-analyze">ANALYZE</button>
+  </div>
+  <div class="header-right">
+    <div class="fg-pill"><span class="fg-label">F&amp;G</span><span class="fg-val">42</span></div>
+    <div class="live-dot"><span class="dot"></span><span>LIVE</span></div>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-head">WATCHLIST</div>
+    <div class="pair-list">
+      <div class="pair-item active"><span class="pair-status"></span>BTC/USDT</div>
+      <div class="pair-item"><span class="pair-status"></span>ETH/USDT</div>
+      <div class="pair-item"><span class="pair-status"></span>SOL/USDT</div>
+      <div class="pair-item"><span class="pair-status"></span>BNB/USDT</div>
+      <div class="pair-item"><span class="pair-status"></span>XRP/USDT</div>
+      <div class="pair-item"><span class="pair-status"></span>AVAX/USDT</div>
+      <div class="pair-item"><span class="pair-status"></span>LINK/USDT</div>
+      <div class="pair-item"><span class="pair-status"></span>ARB/USDT</div>
+      <div class="pair-item"><span class="pair-status"></span>OP/USDT</div>
+      <div class="pair-item"><span class="pair-status"></span>MATIC/USDT</div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="signal-content">
+
+      <!-- TOP BAR -->
+      <div class="top-bar glow-buy">
+        <div class="pair-name">BTC/USDT</div>
+        <div class="signal-badge badge-buy">BUY</div>
+        <div class="setup-chip">SWING</div>
+        <div class="top-bar-right">
+          <div class="conf-wrap">
+            <span class="conf-label">CONFIDENCE</span>
+            <div class="conf-bar-bg"><div class="conf-bar-fill" style="width:88%;background:linear-gradient(90deg,#00cfb4,#00e5c0)"></div></div>
+            <span class="conf-pct">88%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- LEVELS -->
+      <div class="levels-row">
+        <div class="level-card entry-card"><div class="lc-label">ENTRY ZONE</div><div class="lc-val">$64,820 – $65,240</div></div>
+        <div class="level-card tp-card"><div class="lc-label">TP 1</div><div class="lc-val">$67,350</div></div>
+        <div class="level-card tp-card"><div class="lc-label">TP 2</div><div class="lc-val">$70,800</div></div>
+        <div class="level-card tp-card"><div class="lc-label">TP 3</div><div class="lc-val">$75,500</div></div>
+        <div class="level-card sl-card"><div class="lc-label">STOP LOSS</div><div class="lc-val">$63,100</div></div>
+        <div class="level-card rr-card"><div class="lc-label">R : R</div><div class="lc-val">1 : 2.8</div></div>
+      </div>
+
+      <!-- ANALYSIS GRID -->
+      <div class="analysis-grid">
+
+        <section class="panel">
+          <div class="panel-hd"><span class="panel-dot trend-dot"></span>TREND ANALYSIS</div>
+          <div class="panel-body">
+            <div class="tf-row"><span class="tf-badge">DAILY</span><span class="tf-trend tf-up">↑↑ UPTREND</span><span class="tf-detail">EMA: STRONGLY_BULLISH · RSI: 58 · HH+HL confirmed</span></div>
+            <div class="tf-row"><span class="tf-badge">4H</span><span class="tf-trend tf-up">↑↑ UPTREND</span><span class="tf-detail">EMA: BULLISH · RSI: 54 · Structure intact</span></div>
+            <div class="tf-row"><span class="tf-badge">1H</span><span class="tf-trend tf-up">↑↑ UPTREND</span><span class="tf-detail">EMA: BULLISH · RSI: 51 · Pullback to demand</span></div>
+            <div class="tf-row"><span class="tf-badge">15M</span><span class="tf-trend tf-mild">↑ MILD UP</span><span class="tf-detail">EMA: MIXED · RSI: 48 · Ranging near support</span></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-hd"><span class="panel-dot smc-dot"></span>SMART MONEY</div>
+          <div class="panel-body">
+            <div class="p-row"><div class="p-key">STRUCTURE</div><div class="p-val">HH(3) + HL(2) — confirmed bullish market structure</div></div>
+            <div class="p-row"><div class="p-key">BOS</div><div class="p-val">Bullish BOS: close broke above swing high $65,100 — institutional buying confirmed</div></div>
+            <div class="p-row"><div class="p-key">CHOCH</div><div class="p-val">No CHOCH — trend character unchanged</div></div>
+            <div class="p-row"><div class="p-key">SWEEP</div><div class="p-val">SELL_SIDE_LIQUIDITY_SWEPT at $63,850 — longs trapped, potential reversal long</div></div>
+            <div class="p-row"><div class="p-key">OB</div><div class="p-val">At bullish OB [$64,820 – $65,240] — institutional demand zone active</div></div>
+            <div class="p-row"><div class="p-key">FVG</div><div class="p-val">Bullish FVG [$64,100 – $64,520] (0.65%) — imbalance acting as support</div></div>
+            <div class="p-row"><div class="p-key">BIAS</div><div class="p-val">ACCUMULATION — institutional demand being absorbed at current levels</div></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-hd"><span class="panel-dot ind-dot"></span>INDICATORS</div>
+          <div class="panel-body">
+            <div class="p-row"><div class="p-key">RSI</div><div class="p-val">RSI(54.3) — BULLISH_ZONE | Bias: MILD_BULLISH</div></div>
+            <div class="p-row"><div class="p-key">MACD</div><div class="p-val">MACD: BULLISH_MOMENTUM_INCREASING | Histogram EXPANDING (142.80)</div></div>
+            <div class="p-row"><div class="p-key">EMA</div><div class="p-val">STRONGLY_BULLISH | EMA20=65,120 | EMA50=63,480 | EMA200=55,200</div></div>
+            <div class="p-row"><div class="p-key">VOLUME</div><div class="p-val">HIGH | 1.82x 20-period average — confirmed institutional participation</div></div>
+            <div class="p-row"><div class="p-key">MOMENTUM</div><div class="p-val">MILD_BULLISH | Delta volume: POSITIVE_ABSORPTION</div></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-hd"><span class="panel-dot sent-dot"></span>MARKET SENTIMENT</div>
+          <div class="panel-body">
+            <div class="p-row"><div class="p-key">BTC</div><div class="p-val">Self-referencing — base asset analysis</div></div>
+            <div class="p-row"><div class="p-key">F&amp;G</div><div class="p-val">Index: 42 (Fear) | Contrarian signal: MILD_BULLISH</div></div>
+            <div class="p-row"><div class="p-key">NEWS</div><div class="p-val">NEUTRAL_TO_POSITIVE — No major adverse events detected</div></div>
+            <div class="p-row"><div class="p-key">WHALES</div><div class="p-val">MODERATE_ACCUMULATION — Elevated institutional interest</div></div>
+            <div class="p-row"><div class="p-key">FUNDING</div><div class="p-val">0.0180% NEUTRAL — balanced derivatives market</div></div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- RISK -->
+      <section class="panel wide-panel">
+        <div class="panel-hd"><span class="panel-dot risk-dot"></span>RISK ANALYSIS</div>
+        <div class="panel-body risk-grid">
+          <div class="risk-item"><div class="lc-label">RISK LEVEL</div><div class="lc-val">LOW</div></div>
+          <div class="risk-item"><div class="lc-label">VOLATILITY</div><div class="lc-val">ATR=620.00 (0.94% of price) — NORMAL_VOLATILITY</div></div>
+          <div class="risk-item"><div class="lc-label">LIQUIDATION</div><div class="lc-val">LOW | At 3x, theoretical liquidation ~26.7% from entry. SL consumes 2.6% of capital per 1% account risk.</div></div>
+          <div class="risk-item"><div class="lc-label">LEVERAGE</div><div class="lc-val">3x recommended | Hard cap 6x — never exceed without proportionally reduced position size</div></div>
+        </div>
+      </section>
+
+      <!-- REASONING -->
+      <section class="panel wide-panel reasoning-panel">
+        <div class="panel-hd"><span class="panel-dot reason-dot"></span>INSTITUTIONAL ANALYSIS</div>
+        <div class="reasoning-list">
+          <div class="reason-item"><div class="reason-num">1</div><div>Multi-timeframe consensus: BULLISH at 88% strength. Daily=UPTREND | 4H=UPTREND | 1H=UPTREND | 15M=MILD_UPTREND. Higher timeframe dominance confirms directional bias with strong confluence across all priority timeframes.</div></div>
+          <div class="reason-item"><div class="reason-num">2</div><div>SMC footprint: HH(3)+HL(2) confirmed bullish market structure. Price is trading at institutional bullish order block [$64,820–$65,240], indicating a high-probability demand zone reaction. Sell-side liquidity swept at $63,850 — smart money repositioned longs. BOS confirmed above $65,100.</div></div>
+          <div class="reason-item"><div class="reason-num">3</div><div>Technical confluence: RSI(54.3) BULLISH_ZONE, MACD BULLISH_MOMENTUM_INCREASING with expanding histogram, EMA alignment STRONGLY_BULLISH (price &gt; EMA20 &gt; EMA50 &gt; EMA200), volume HIGH at 1.82x average. Delta volume shows POSITIVE_ABSORPTION — buyers absorbing supply aggressively.</div></div>
+          <div class="reason-item"><div class="reason-num">4</div><div>Market environment: Fear &amp; Greed Index at 42 (Fear) — contrarian read MILD_BULLISH (market undershooting fair value). Moderate whale accumulation detected. Funding rate 0.0180% neutral — no crowded positioning risk. Derivatives market balanced, no squeeze risk in either direction.</div></div>
+        </div>
+      </section>
+
+      <!-- WARNINGS -->
+      <section class="warnings-panel">
+        <div class="panel-hd warn-hd">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          WARNINGS
+        </div>
+        <div class="warnings-list">
+          <div class="warn-item"><div class="warn-dot"></div><div>Confidence at 88% — above threshold but not peak conviction. Consider limiting position to 0.75% account risk until higher timeframe confirms continuation above $65,500.</div></div>
+          <div class="warn-item"><div class="warn-dot"></div><div>15M showing mild structure — entry timing sensitive. Wait for 15M close above $65,100 or a clear rejection wick from OB before executing. Avoid chasing breakout candles.</div></div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+</body>
+</html>
