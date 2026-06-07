@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>APEX — Institutional Signal Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+
+<!-- ── HEADER ──────────────────────────────────────── -->
+<header class="header">
+  <div class="logo">
+    <div class="logo-hex">⬡</div>
+    <div class="logo-text">APEX <span class="logo-sub">Signal Engine</span></div>
+  </div>
+
+  <div class="search-bar">
+    <input id="pairInput" type="text" placeholder="BTC/USDT" spellcheck="false" autocomplete="off"/>
+    <button id="analyzeBtn" class="btn-analyze">
+      <span id="btnLabel">ANALYZE</span>
+      <svg id="btnSpinner" class="spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><circle cx="12" cy="12" r="10" stroke-opacity=".3"/><path d="M12 2a10 10 0 0 1 10 10"/></svg>
+    </button>
+  </div>
+
+  <div class="header-right">
+    <div class="fg-pill" id="fgPill">
+      <span class="fg-label">F&amp;G</span>
+      <span class="fg-val" id="fgVal">--</span>
+    </div>
+    <div class="live-dot">
+      <span class="dot"></span>
+      <span id="liveLabel">READY</span>
+    </div>
+  </div>
+</header>
+
+<!-- ── LAYOUT ──────────────────────────────────────── -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-head">WATCHLIST</div>
+    <div id="pairList" class="pair-list"></div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main" id="main">
+
+    <!-- EMPTY STATE -->
+    <div class="empty-state" id="emptyState">
+      <div class="empty-hex">⬡</div>
+      <div class="empty-title">SELECT A PAIR</div>
+      <div class="empty-sub">Institutional-grade SMC + MTF analysis</div>
+    </div>
+
+    <!-- LOADING -->
+    <div class="loading-wrap" id="loadingWrap" style="display:none">
+      <div class="loader-ring"></div>
+      <div class="loader-steps" id="loaderSteps"></div>
+    </div>
+
+    <!-- SIGNAL CONTENT -->
+    <div class="signal-content" id="signalContent" style="display:none">
+
+      <!-- ── TOP BAR ── -->
+      <div class="top-bar">
+        <div class="pair-name" id="dispPair">--/--</div>
+        <div class="signal-badge" id="signalBadge">--</div>
+        <div class="setup-chip" id="setupChip">--</div>
+        <div class="top-bar-right">
+          <div class="conf-wrap">
+            <span class="conf-label">CONFIDENCE</span>
+            <div class="conf-bar-bg"><div class="conf-bar-fill" id="confFill"></div></div>
+            <span class="conf-pct" id="confPct">--%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── LEVELS ── -->
+      <div class="levels-row" id="levelsRow">
+        <div class="level-card entry-card">
+          <div class="lc-label">ENTRY ZONE</div>
+          <div class="lc-val" id="lcEntry">-- – --</div>
+        </div>
+        <div class="level-card tp-card">
+          <div class="lc-label">TP 1</div>
+          <div class="lc-val" id="lcTp1">--</div>
+        </div>
+        <div class="level-card tp-card">
+          <div class="lc-label">TP 2</div>
+          <div class="lc-val" id="lcTp2">--</div>
+        </div>
+        <div class="level-card tp-card">
+          <div class="lc-label">TP 3</div>
+          <div class="lc-val" id="lcTp3">--</div>
+        </div>
+        <div class="level-card sl-card">
+          <div class="lc-label">STOP LOSS</div>
+          <div class="lc-val" id="lcSl">--</div>
+        </div>
+        <div class="level-card rr-card">
+          <div class="lc-label">R : R</div>
+          <div class="lc-val" id="lcRr">--</div>
+        </div>
+      </div>
+
+      <!-- ── ANALYSIS GRID ── -->
+      <div class="analysis-grid">
+
+        <section class="panel" id="trendPanel">
+          <div class="panel-hd">
+            <span class="panel-dot trend-dot"></span>TREND ANALYSIS
+          </div>
+          <div class="panel-body" id="trendBody"></div>
+        </section>
+
+        <section class="panel" id="smcPanel">
+          <div class="panel-hd">
+            <span class="panel-dot smc-dot"></span>SMART MONEY
+          </div>
+          <div class="panel-body" id="smcBody"></div>
+        </section>
+
+        <section class="panel" id="indPanel">
+          <div class="panel-hd">
+            <span class="panel-dot ind-dot"></span>INDICATORS
+          </div>
+          <div class="panel-body" id="indBody"></div>
+        </section>
+
+        <section class="panel" id="sentPanel">
+          <div class="panel-hd">
+            <span class="panel-dot sent-dot"></span>MARKET SENTIMENT
+          </div>
+          <div class="panel-body" id="sentBody"></div>
+        </section>
+
+      </div>
+
+      <!-- ── RISK ROW ── -->
+      <section class="panel wide-panel" id="riskPanel">
+        <div class="panel-hd">
+          <span class="panel-dot risk-dot"></span>RISK ANALYSIS
+        </div>
+        <div class="panel-body risk-grid" id="riskBody"></div>
+      </section>
+
+      <!-- ── REASONING ── -->
+      <section class="panel wide-panel reasoning-panel">
+        <div class="panel-hd">
+          <span class="panel-dot reason-dot"></span>INSTITUTIONAL ANALYSIS
+        </div>
+        <div class="reasoning-list" id="reasoningList"></div>
+      </section>
+
+      <!-- ── WARNINGS ── -->
+      <section class="warnings-panel" id="warningsPanel">
+        <div class="panel-hd warn-hd">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          WARNINGS
+        </div>
+        <div class="warnings-list" id="warningsList"></div>
+      </section>
+
+    </div><!-- /signal-content -->
+  </main>
+</div>
+
+<script src="/js/app.js"></script>
+</body>
+</html>
